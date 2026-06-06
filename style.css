@@ -1,0 +1,253 @@
+.background {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("background.jpg");
+    position: absolute;
+    background-size: cover;
+    background-repeat: repeat-x;
+    margin: 0,0;
+    overflow-x: hidden;
+    visibility: hidden;
+}
+#home{
+    height: 100vh;
+    width: 100vw;
+    background-image: url("home-bg.jpg");
+    background-size: cover;
+    position: absolute;
+    background-repeat: repeat-x;
+    font-family: Gotham;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0,0;
+    margin-top: -10px;
+}
+.start {
+    height: 100vh;
+    width: 100vw;
+    background-image: url("home-bg.jpg");
+    background-size: cover;
+    position: absolute;
+    font-family: Gotham;
+    display: flex;
+    visibility: hidden;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    
+}
+.Play{ 
+    cursor: pointer;
+}
+
+.H-play{
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    padding-left: 33%;
+}
+.H-play:hover{
+    color: rgb(236, 236, 236);
+    transition-duration: 0.5s;
+}
+#About{
+    padding-left: 37%;
+}
+.play-box{
+    position: absolute;
+    margin-top: 6vh;
+    border-radius: 12px;
+    background-image: url('play-bg-2.jpg');
+    background-size: cover;
+    padding-top: 0px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 30px;
+    border: 4px solid rgb(196, 4, 4);
+}
+.end-box{
+    width: 96vw;
+    height: 96vh;
+    background-color: hsl(0, 0%, 100%);
+    visibility: hidden;
+}
+.welcome {
+    font-size: 70px;
+    position: absolute;
+    margin-top: -80vh;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    color: rgb(247, 247, 247);
+}
+.H-text{
+    margin-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 12px;
+    background-color: rgba(216, 216, 216, 0.747);
+}
+.H-text-2{
+    padding:1px;
+    border-radius: 12px;
+    background-color: rgba(26, 160, 14, 0.836);
+    transition-duration: 0.5s;
+}
+.H-text-2:hover{
+    background-color: rgba(255, 0, 0, 0.788);
+}
+.intro {
+    position: absolute;
+    color: rgb(0, 7, 15);
+    font-size: 30px;
+    text-align: center;
+    margin-top: 10vh;
+    background-image: url('play-bg-2.jpg');
+    padding-top: 40px;
+    padding-bottom: 400px;
+    padding-left: 70px;
+    padding-right: 70px;
+    border-radius: 24px;
+    background-size: cover;
+    border: 2px solid black;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-01 {
+    width: 230px;
+    height: 230px;
+    position: absolute;
+    margin-top: 640px;
+    margin-left: 830px;
+    background-image: url("play-btn.png");
+    background-color: transparent;
+    border: none;
+    background-size: contain;
+    cursor: pointer;
+} 
+.btn-01:hover {
+    transition-duration: 1s;
+    margin-left: 900px;
+}
+.charact{
+    align-items: center;
+    justify-content: center;
+}
+.char01{
+    position: absolute;
+    width: 255px;
+    margin-left: -140px;
+    margin-top: 100px;
+    
+    padding-right: 40px;
+    cursor: pointer;
+}
+.select-char{
+    position: absolute;
+    margin-left: -100px;
+    margin-top: 60px;
+    font-size: 25px;
+    color: rgb(255, 0, 0);
+    border-bottom: 1px solid black;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.intro-head {
+    color: rgb(255, 0, 0);
+    font-size: 60px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+.body {
+    margin: 0;
+}
+
+.boy {
+    width: 280px;
+    margin-top: 54vh;
+    position: absolute;
+}
+
+.score {
+    position: absolute;
+    margin-top: 40px;
+    margin-left: 70px;
+    visibility: visible;
+    font-size: 60px;
+    font-weight: bold;
+    font-family: Gotham;
+    visibility: hidden;
+}
+
+.box {
+    background-image: url("flame.gif");
+    background-size: 50px 100%;
+    width: 50px;
+    height: 100px;
+    position: absolute;
+    margin-top: 70vh;
+}
+
+.arrow {
+    background-image: url("flame.gif");
+    background-size: 50px 100%;
+    width: 50px;
+    height: 100px;
+    position: absolute;
+    margin-top: 470px;
+}
+
+.end {
+    position: absolute;
+    width: 96vw;
+    height: 96vh;
+    background-color: rgba(15, 15, 15, 0.808);
+    font-size: 70px;
+    font-weight: bold;
+    color: rgb(253, 253, 253);
+    font-family: Gotham;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    margin-left: 2vw;
+    margin-top: 2vh;
+    border-radius: 24px;
+}
+
+.gameover {
+    color: red;
+    font-size: 100px;
+    padding: 30px;
+    border-radius: 30px;
+    background-color: transparent;
+}
+
+.yourscore {
+    color: rgb(67, 235, 0);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+@font-face {
+    font-family: Gotham;
+    src: url("Gotham.woff2");
+}
+
+.btn {
+    
+    background-color: transparent;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border: none;
+    cursor: pointer;
+}
