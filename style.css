@@ -321,6 +321,7 @@ html, body {
     background-image: url("background.jpg");
     background-size: cover;
     background-repeat: repeat-x;
+    background-position: 0px 0px;
     overflow: hidden;
     display: none;
 }

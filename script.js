@@ -6,7 +6,7 @@ var deadsound = new Audio("dead.mp3");
 
 var runWorker = 0;
 var runImage = 1;
-var x = 300;
+var x = 0;
 var backgroundWorker = 0;
 var jumpImage = 1;
 var jumpWorker = 0;
@@ -242,6 +242,7 @@ function moveObstacles() {
                 var el = document.createElement("div");
                 el.className = obs.type;
                 el.id = obs.id;
+                el.style.transition = "left 0.1s linear";   
                 el.style.left = obs.x + "px";
                 container.appendChild(el);
                 obs.element = el;
@@ -356,7 +357,10 @@ function reload() {
 }
 
 function start() {
-    document.getElementById("background").style.display = "block";
+    x = 0;
+    var bg = document.getElementById("background");
+    bg.style.backgroundPositionX = "0px";
+    bg.style.display = "block";
     var scoreEl = document.getElementById("score");
     scoreEl.style.display = "block";
     scoreEl.style.visibility = "visible";
