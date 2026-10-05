@@ -2,60 +2,7 @@ var runsound = new Audio("run.mp3");
 var jumpsound = new Audio("jump.mp3");
 var deadsound = new Audio("dead.mp3");
 
-
-//Owner Credit for Pavindu Dulshan Bhashitha
-
-function key(event) {
-    //alert(event.which);
-
-    if (startif == 0) {
-
-        //Entercode
-        if (event.which == 13) {
-            if (runWorker == 0) {
-                runWorker = setInterval(run, 100);
-                runsound.play();
-                backgroundWorker = setInterval(background, 100);
-                scoreWorker = setInterval(score, 100);
-                boxId = box();
-                boxWorker = setInterval(movebox, 100);
-                if (bmt < 485) {
-                    document.getElementById("boy").style.marginTop = "485px";
-                }
-                arrowId = arrows();
-                movearrowWorker = setInterval(movearrows, 100);
-            }
-        }
-
-        //space
-        if (event.which == 32) {
-            if (jumpWorker == 0) {
-                clearInterval(runWorker);
-                runsound.pause();
-                jumpWorker = setInterval(jump, 100);
-                jumpsound.play();
-                if (bmt < 54) {
-                    document.getElementById("boy").style.marginTop = "54vh";
-                }
-
-            }
-
-        }
-        //shift
-        if (event.which == 16) {
-            if(deadImage < 1){
-            pauseWorker = pause();
-             }
-        }
-
-        //ctrl
-        if (event.which == 17) {
-            if (deadImage < 1) {
-                slideWorker = setInterval(slide, 200);
-            }
-        }
-    }
-}
+// Owner Credit for Pavindu Dulshan Bhashitha
 
 var runWorker = 0;
 var runImage = 1;
@@ -67,36 +14,90 @@ var slideImage = 1;
 var slideWorker = 0;
 var s = 0;
 var scoreWorker = 0;
-var bml = 800;
-var boxId = 0;
-var boxWorker = 0;
 var deadImage = 0;
+var deadWorker = 0;
 var pauseWorker = 0;
 var startif = 1;
-var aml = 1200;
-var movearrowWorker = 0;
 var bmt = 54;
 var slideif = 1;
-var arrowId = 0;
+var obstacleWorker = 0;
+
+// Obstacle pool for efficient DOM recreation
+var obstacles = [];
+
+function key(event) {
+    if (startif == 0) {
+        var keyCode = event.which || event.keyCode;
+
+        // ENTER: Run
+        if (keyCode == 13) {
+            if (runWorker == 0 && deadImage == 0) {
+                runWorker = setInterval(run, 100);
+                runsound.play().catch(function() {});
+
+                if (backgroundWorker == 0) {
+                    backgroundWorker = setInterval(background, 100);
+                }
+                if (scoreWorker == 0) {
+                    scoreWorker = setInterval(score, 100);
+                }
+
+                document.getElementById("boy").style.marginTop = "54vh";
+                bmt = 54;
+
+                if (obstacles.length == 0) {
+                    initObstacles();
+                }
+                if (obstacleWorker == 0) {
+                    obstacleWorker = setInterval(moveObstacles, 100);
+                }
+            }
+        }
+
+        // SPACE: Jump
+        if (keyCode == 32) {
+            if (jumpWorker == 0 && deadImage == 0) {
+                clearInterval(runWorker);
+                runWorker = 0;
+                runsound.pause();
+                jumpWorker = setInterval(jump, 100);
+                jumpsound.currentTime = 0;
+                jumpsound.play().catch(function() {});
+            }
+        }
+
+        // SHIFT: Pause
+        if (keyCode == 16) {
+            if (deadImage < 1) {
+                pause();
+            }
+        }
+
+        // CTRL: Slide
+        if (keyCode == 17) {
+            if (deadImage < 1 && slideWorker == 0 && jumpWorker == 0) {
+                clearInterval(runWorker);
+                runWorker = 0;
+                slideWorker = setInterval(slide, 100);
+            }
+        }
+    }
+}
 
 function run() {
     runImage = runImage + 1;
     if (runImage == 9) {
         runImage = 1;
     }
-    document.getElementById("boy").src = "1/Run (" + runImage + ").png"
+    document.getElementById("boy").src = "1/Run (" + runImage + ").png";
 }
 
 function background() {
     x = x - 20;
-
     document.getElementById("background").style.backgroundPositionX = x + "px";
-    
 }
 
-
 function jump() {
-
     if (jumpImage <= 5) {
         bmt = bmt - 3;
         document.getElementById("boy").style.marginTop = bmt + "vh";
@@ -106,284 +107,300 @@ function jump() {
         document.getElementById("boy").style.marginTop = bmt + "vh";
     }
 
-
-
-    clearInterval(slide);
     jumpImage = jumpImage + 1;
     if (jumpImage == 11) {
         jumpImage = 1;
-
         clearInterval(jumpWorker);
-        runWorker = setInterval(run, 100);
-        runsound.play();
         jumpWorker = 0;
+        bmt = 54;
+        document.getElementById("boy").style.marginTop = "54vh";
 
-        if (backgroundWorker == 0) {
-            backgroundWorker = setInterval(background, 100);
+        if (deadImage == 0) {
+            runWorker = setInterval(run, 100);
+            runsound.play().catch(function() {});
 
+            if (backgroundWorker == 0) {
+                backgroundWorker = setInterval(background, 100);
+            }
+            if (scoreWorker == 0) {
+                scoreWorker = setInterval(score, 100);
+            }
+            if (obstacleWorker == 0) {
+                obstacleWorker = setInterval(moveObstacles, 100);
+            }
         }
-        if (scoreWorker == 0) {
-            scoreWorker = setInterval(score, 100);
-        }
-        if (boxId == 0) {
-            boxId = box();
-        }
-        if (boxWorker == 0) {
-            boxWorker = setInterval(movebox, 100);
-        }
-        if (arrowId == 0) {
-            arrowId = arrows();
-        }
-        if (movearrowWorker == 0) {
-            movearrowWorker = setInterval(movearrows, 100);
-        }
-
-
     }
-    document.getElementById("boy").src = "1/Jump (" + jumpImage + ").png"
-
+    document.getElementById("boy").src = "1/Jump (" + jumpImage + ").png";
 }
+
 function slide() {
     slideif = 0;
-    jumpsound.play();
-    clearInterval(runWorker);
+    jumpsound.currentTime = 0;
+    jumpsound.play().catch(function() {});
+
     if (deadImage > 0) {
         clearInterval(slideWorker);
+        slideWorker = 0;
+        return;
     }
-
 
     document.getElementById("boy").src = "1/Slide (" + slideImage + ").png";
     slideImage = slideImage + 1;
 
-
     if (slideImage == 6) {
-
         slideImage = 1;
         clearInterval(slideWorker);
-        runWorker = setInterval(run, 100);
-
-        if (movearrowWorker == 1) {
-            clearInterval(run);
-        }
-
+        slideWorker = 0;
         slideif = 1;
 
+        if (deadImage == 0) {
+            runWorker = setInterval(run, 100);
+            runsound.play().catch(function() {});
 
-        if (backgroundWorker == 0) {
-            backgroundWorker = setInterval(background, 100);
-
+            if (backgroundWorker == 0) {
+                backgroundWorker = setInterval(background, 100);
+            }
+            if (scoreWorker == 0) {
+                scoreWorker = setInterval(score, 100);
+            }
+            if (obstacleWorker == 0) {
+                obstacleWorker = setInterval(moveObstacles, 100);
+            }
         }
-        if (scoreWorker == 0) {
-            scoreWorker = setInterval(score, 100);
-        }
-        if (boxId == 0) {
-            boxId = box();
-        }
-        if (boxWorker == 0) {
-            boxWorker = setInterval(movebox, 100);
-        }
-        if (arrowId == 0) {
-            arrowId = arrows();
-        }
-        if (movearrowWorker == 0) {
-            movearrowWorker = setInterval(movearrows, 100);
-        }
-
     }
-
-
-
 }
-function score() {
 
+function score() {
     s = s + 10;
     document.getElementById("score").innerHTML = s;
 }
-function box() {
+
+// Efficient obstacle initialization in memory
+function initObstacles() {
+    obstacles = [];
+    var container = document.getElementById("obstacles-container");
+    if (container) {
+        container.innerHTML = "";
+    }
+
+    var bml = 800;
+    var aml = 1300;
+
     for (var a = 0; a < 100; a++) {
-
-        var box = document.createElement("div");
-        box.className = "box";
-        box.id = "d" + a;
-
-        if (a <= 30 & a >= 2) {
-
-            bml = bml + 1000;
+        if (a > 0 && a <= 30) {
+            bml += 1000;
+            aml += 1000;
+        } else if (a >= 31 && a <= 60) {
+            bml += 800;
+            aml += 800;
+        } else if (a >= 61) {
+            bml += 600;
+            aml += 600;
         }
 
-        if (a >= 31 & a <= 60) {
+        obstacles.push({
+            id: "d" + a,
+            type: "box",
+            x: bml,
+            element: null,
+            passed: false,
+            dodged: false
+        });
 
-            bml = bml + 800;
-        }
-
-        if (a >= 61 & a <= 100) {
-
-
-            bml = bml + 600;
-        }
-        box.style.marginLeft = bml + "px";
-
-        document.getElementById("background").appendChild(box);
-
+        obstacles.push({
+            id: "c" + a,
+            type: "arrow",
+            x: aml,
+            element: null,
+            passed: false,
+            dodged: false
+        });
     }
 }
-function arrows() {
-    for (var a = 0; a < 100; a++) {
 
-        var arrow = document.createElement("div");
-        arrow.className = "arrow";
-        arrow.id = "c" + a;
+// Efficient obstacle update: creates DOM divs on demand and removes offscreen divs
+function moveObstacles() {
+    var container = document.getElementById("obstacles-container") || document.getElementById("background");
+    var viewWidth = window.innerWidth || 1920;
 
-        if (a <= 30 & a >= 2) {
+    // Dynamically calculate accurate character collision bounds based on actual DOM position
+    var boyEl = document.getElementById("boy");
+    var boyLeft = boyEl ? boyEl.offsetLeft : 60;
+    // Character body spans roughly offset +55px to +205px within the 280px sprite
+    var hitMaxX = boyLeft + 175; // ~235px (front contact: moment flame touches character)
+    var hitMinX = boyLeft + 20;  // ~80px (rear exit: moment flame completely passes character)
 
-            aml = aml + 1000;
-        }
+    for (var i = 0; i < obstacles.length; i++) {
+        var obs = obstacles[i];
+        if (obs.passed) continue;
 
-        if (a >= 31 & a <= 60) {
+        obs.x -= 25;
 
-            aml = aml + 800;
-        }
-
-        if (a >= 61 & a <= 100) {
-
-
-            aml = aml + 600;
-        }
-        arrow.style.marginLeft = aml + "px";
-
-        document.getElementById("background").appendChild(arrow);
-
-    }
-  
-}
-function movearrows() {
-    for (a = 0; a < 100; a++) {
-
-        var y = getComputedStyle(document.getElementById("c" + a));
-
-        var q = parseInt(y.marginLeft);
-
-        q = q - 25;
-
-        document.getElementById("c" + a).style.marginLeft = q + "px";
-        //alert(q);
-
-        // 160 - 95
-        if (q >= 60 & q <= 185) {
-            if (slideif == 1) {
-                clearInterval(runWorker);
-                runWorker = -1;
-                runsound.pause();
-                clearInterval(backgroundWorker);
-
-                clearInterval(boxId);
-
-                clearInterval(scoreWorker);
-
-                clearInterval(boxWorker);
-                jumpsound.pause();
-                setInterval(dead, 100);
-                deadsound.play();
-                clearInterval(slideWorker);
-                clearInterval(jumpWorker);
-                jumpWorker = -1;
-                clearInterval(movearrowWorker);
-                movearrowWorker = 1;
-
+        // Check if inside or approaching the active visible area
+        if (obs.x < viewWidth + 150 && obs.x > -100) {
+            if (!obs.element) {
+                var el = document.createElement("div");
+                el.className = obs.type;
+                el.id = obs.id;
+                el.style.left = obs.x + "px";
+                container.appendChild(el);
+                obs.element = el;
+            } else {
+                obs.element.style.left = obs.x + "px";
             }
 
-
-        }
-
-    }
-
-}
-function end(){
-    document.getElementById("end-box").style.visibility = "visible";
-    document.getElementById("background").style.visibility = "hidden";
-}
-function movebox() {
-
-    for (a = 0; a < 100; a++) {
-
-        var z = getComputedStyle(document.getElementById("d" + a));
-
-        var p = parseInt(z.marginLeft);
-
-        p = p - 25;
-
-        document.getElementById("d" + a).style.marginLeft = p + "px";
-        //alert(p);
-
-        // 160 - 95
-
-        if (p >= 40 & p <= 168) {
-            if (bmt == 54) {
-                clearInterval(runWorker);
-                runWorker = -1;
-                runsound.pause();
-                clearInterval(backgroundWorker);
-
-                clearInterval(boxId);
-
-                clearInterval(scoreWorker);
-
-                clearInterval(boxWorker);
-
-                clearInterval(jumpWorker);
-                jumpWorker = -1;
-                jumpsound.pause();
-                setInterval(dead, 100);
-                deadsound.play();
-                clearInterval(movearrowWorker);
-                movearrowWorker = 1;
+            // Ground box collision check
+            if (obs.type === "box") {
+                if (obs.x >= hitMinX && obs.x <= hitMaxX) {
+                    if (bmt < 54) {
+                        // Player is jumping in the air: successfully cleared the flame!
+                        obs.dodged = true;
+                    } else if (!obs.dodged) {
+                        // Player is on the ground: instant direct impact at front contact!
+                        triggerDead();
+                        return;
+                    }
+                }
             }
 
-
+            // Aerial arrow collision check
+            if (obs.type === "arrow") {
+                if (obs.x >= hitMinX && obs.x <= hitMaxX) {
+                    if (slideif === 0) {
+                        // Player is sliding: successfully ducked under!
+                        obs.dodged = true;
+                    } else if (!obs.dodged) {
+                        // Player is standing upright: instant direct impact at front contact!
+                        triggerDead();
+                        return;
+                    }
+                }
+            }
+        } else if (obs.x <= -100) {
+            // Reached left of screen: remove div from DOM to free resources
+            if (obs.element) {
+                obs.element.remove();
+                obs.element = null;
+            }
+            obs.passed = true;
         }
     }
 
+    // Check victory condition: all obstacles cleared
+    if (obstacles.length > 0 && obstacles.every(function(o) { return o.passed; })) {
+        end();
+    }
 }
+
+function triggerDead() {
+    clearInterval(runWorker);
+    runWorker = -1;
+    runsound.pause();
+    clearInterval(backgroundWorker);
+    backgroundWorker = 0;
+    clearInterval(scoreWorker);
+    scoreWorker = 0;
+    clearInterval(obstacleWorker);
+    obstacleWorker = 0;
+    clearInterval(jumpWorker);
+    jumpWorker = -1;
+    clearInterval(slideWorker);
+    slideWorker = 0;
+    jumpsound.pause();
+
+    deadsound.currentTime = 0;
+    deadsound.play().catch(function() {});
+    deadWorker = setInterval(dead, 100);
+}
+
 function dead() {
-
     deadImage = deadImage + 1;
     document.getElementById("boy").style.marginTop = "54vh";
-    if (deadImage == 11) {
+    if (deadImage >= 10) {
         deadImage = 10;
-
+        clearInterval(deadWorker);
     }
     document.getElementById("boy").src = "1/Dead (" + deadImage + ").png";
-    document.getElementById("end").style.visibility = "visible";
-    document.getElementById("endscore").innerHTML = s;
 
+    var endEl = document.getElementById("end");
+    endEl.style.visibility = "visible";
+    endEl.style.display = "flex";
+    document.getElementById("endscore").innerHTML = s;
 }
+
 function pause() {
     clearInterval(runWorker);
     runWorker = 0;
     clearInterval(backgroundWorker);
     backgroundWorker = 0;
-    clearInterval(boxWorker);
-    boxWorker = 0;
+    clearInterval(obstacleWorker);
+    obstacleWorker = 0;
     clearInterval(scoreWorker);
     scoreWorker = 0;
     clearInterval(jumpWorker);
     jumpWorker = 0;
-    runsound.pause();
     clearInterval(slideWorker);
     slideWorker = 0;
-    clearInterval(movearrowWorker);
-    movearrowWorker = 0;
+    runsound.pause();
 }
+
+function end() {
+    pause();
+    var winEl = document.getElementById("end-box");
+    winEl.style.visibility = "visible";
+    winEl.style.display = "flex";
+}
+
 function reload() {
     location.reload();
 }
+
 function start() {
-    document.getElementById("background").style.visibility = "visible";
-    document.getElementById("score").style.visibility = "visible";
-    document.getElementById('home').style.visibility = "hidden";
+    document.getElementById("background").style.display = "block";
+    var scoreEl = document.getElementById("score");
+    scoreEl.style.display = "block";
+    scoreEl.style.visibility = "visible";
+    document.getElementById("home-page").style.display = "none";
+    document.getElementById("start").style.display = "none";
+    closeabout();
     startif = 0;
+
+    initObstacles();
 }
-function toplay(){
-    document.getElementById('home').style.visibility = "invisible";
-    document.getElementById('start').style.visibility = "visible";
+
+function toplay() {
+    document.getElementById("home-page").style.display = "none";
+    document.getElementById("start").style.display = "flex";
+    closeabout();
 }
+
+function tohome() {
+    document.getElementById("start").style.display = "none";
+    closeabout();
+    document.getElementById("home-page").style.display = "flex";
+}
+
+function toabout() {
+    var modal = document.getElementById("about-modal");
+    if (modal) modal.style.display = "flex";
+}
+
+function closeabout() {
+    var modal = document.getElementById("about-modal");
+    if (modal) modal.style.display = "none";
+}
+
+function man() {
+    var char = document.getElementById("char01");
+    if (!char) return;
+    char.style.transform = "scale(1.2) translateY(-10px)";
+    setTimeout(function() {
+        char.style.transform = "scale(1) translateY(0)";
+    }, 200);
+}
+
+// Backwards compatibility wrappers
+function box() { return 0; }
+function arrows() { return 0; }
+function movebox() {}
+function movearrows() {}

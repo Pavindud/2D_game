@@ -1,66 +1,96 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>
-        2D Game By PDB
-
-    </title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2D Game By PDB</title>
     <link rel="icon" href="icon.png" />
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body onkeyup="key(event);" class="body" id="body">
-<div class="home-page">
-    
-    <div id="home">
-        <div class="welcome">Welcome To 2D Animation Game</div>
-        <div class="play-box">
-            <img width="300" src="1/Idle (1).png"/>
-         
-         <img src="play-btn.png" onclick="start()" width="300" id="play" class="Play"/>
-             <div class="H-text-2">
-              <h3 onclick="toplay()" id="H-play" class="H-play">How to play</h3>
-              <h3 id="About" class="H-play">About us</h3>
-            </div>
-        
+    <!-- Home Page Screen -->
+    <div id="home-page">
+        <div class="home" id="welcome">
+            <h1>Welcome to 2D Game</h1>
         </div>
-
-
+        <div class="home" id="start-box">    
+            <div class="play-box">
+                <img id="font-charactor" class="char-preview" src="1/Idle (1).png" alt="Character" />
+                <img src="play-btn.png" onclick="start()" id="play" class="Play" alt="Play Game" />
+                <div class="H-text-2">
+                    <button type="button" onclick="toplay()" id="H-play" class="H-play">How to play</button>
+                    <button type="button" onclick="toabout()" id="About" class="H-play">About us</button>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 
+    <!-- How to Play / Controls Screen -->
     <div class="start" id="start">
-        <div class="welcome">Welcome To 2D Animation Game</div>
-        <div  class="intro"><span class="intro-head">Game Controls</span>
-            </br>
-            <div class="H-text"></br>Press "ENTER" To run.
-            </br>Press"SPACE" to jump.
-            </br>Press "SHIFT" to pause.
-            </br>Press "CTRL" to slide.
+        <div class="intro">
+            <span class="intro-head">Game Controls</span>
+            
+            <div class="H-text">
+                <div class="ctrl-item"><span class="ctrl-key">ENTER</span> Run</div>
+                <div class="ctrl-item"><span class="ctrl-key">SPACE</span> Jump</div>
+                <div class="ctrl-item"><span class="ctrl-key">CTRL</span> Slide</div>
+                <div class="ctrl-item"><span class="ctrl-key">SHIFT</span> Pause</div>
             </div>
-        
-        </div>
+
             <div class="charact">
-            <p class="select-char">Your Character</p>
-            <img onclick="man();" class="char01" id="char01" src="1/Idle (1).png" />
+                <p class="select-char">Your Character</p>
+                <img onclick="man();" class="char01" id="char01" src="1/Idle (1).png" alt="Character" title="Click me!" />
+            </div>
+
+            <div class="start-actions">
+                <button type="button" onclick="tohome()" class="btn-back">Back</button>
+                <button type="button" onclick="start();" class="btn-01" title="Start Game"></button>
+            </div>
         </div>
-        <button onclick="start();" class="btn-01"></button>
     </div>
+
+    <!-- About Us Modal -->
+    <div id="about-modal" class="about-modal">
+        <div class="about-card">
+            <h2>About 2D Game</h2>
+            <p>Created by <strong>Pavindu Dulshan Bhashitha</strong></p>
+            <p>Jump over ground fire flames and slide under aerial obstacles to survive and earn the highest score!</p>
+            <button type="button" onclick="closeabout()" class="btn-back">Close</button>
+        </div>
+    </div>
+
+    <!-- Main Game World -->
     <div class="background" id="background">
         <p id="score" class="score">0</p>
-        <img id="boy" class="boy" src="1/Idle (1).png" />
+        <div id="obstacles-container"></div>
+        <img id="boy" class="boy" src="1/Idle (1).png" alt="Character" />
     </div>
-    <div class="end" id="end">
-        <div class="gameover">Game Over</div></br>
-        <div class="yourscore">Your Score</div>
-        <div class="endscore" id="endscore">0</div>
-        </br> <button onclick="reload();" class="btn"><img width="300" src="play-btn.png"/></button>
 
+    <!-- Game Over Screen -->
+    <div class="end" id="end">
+        <div class="end-card">
+            <div class="gameover">Game Over</div>
+            <div class="yourscore">Your Score</div>
+            <div class="endscore" id="endscore">0</div>
+            <button type="button" onclick="reload();" class="btn" title="Play Again">
+                <img width="260" src="play-btn.png" alt="Play Again" />
+            </button>
+        </div>
     </div>
+
+    <!-- Victory Screen -->
     <div id="end-box" class="end-box">
-        <p>You Won</p>
+        <div class="win-card">
+            <h1 class="win-text">You Won!</h1>
+            <p class="win-sub">Congratulations! You cleared all 100 obstacles!</p>
+            <button type="button" onclick="reload();" class="btn" title="Play Again">
+                <img width="260" src="play-btn.png" alt="Play Again" />
+            </button>
+        </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 

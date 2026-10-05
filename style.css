@@ -1,240 +1,7 @@
-.background {
-    width: 100vw;
-    height: 100vh;
-    background-image: url("background.jpg");
-    position: absolute;
-    background-size: cover;
-    background-repeat: repeat-x;
-    margin: 0,0;
-    overflow-x: hidden;
-    visibility: hidden;
-}
-#home{
-    height: 100vh;
-    width: 100vw;
-    background-image: url("home-bg.jpg");
-    background-size: cover;
-    position: absolute;
-    background-repeat: repeat-x;
-    font-family: Gotham;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 0,0;
-    margin-top: -10px;
-}
-.start {
-    height: 100vh;
-    width: 100vw;
-    background-image: url("home-bg.jpg");
-    background-size: cover;
-    position: absolute;
-    font-family: Gotham;
-    display: flex;
-    visibility: hidden;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    
-}
-.Play{ 
-    cursor: pointer;
-}
-
-.H-play{
-    font-size: 30px;
-    color: rgb(0, 0, 0);
-    cursor: pointer;
-    padding-left: 33%;
-}
-.H-play:hover{
-    color: rgb(236, 236, 236);
-    transition-duration: 0.5s;
-}
-#About{
-    padding-left: 37%;
-}
-.play-box{
-    position: absolute;
-    margin-top: 6vh;
-    border-radius: 12px;
-    background-image: url('play-bg-2.jpg');
-    background-size: cover;
-    padding-top: 0px;
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-bottom: 30px;
-    border: 4px solid rgb(196, 4, 4);
-}
-.end-box{
-    width: 96vw;
-    height: 96vh;
-    background-color: hsl(0, 0%, 100%);
-    visibility: hidden;
-}
-.welcome {
-    font-size: 70px;
-    position: absolute;
-    margin-top: -80vh;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-weight: bold;
-    color: rgb(247, 247, 247);
-}
-.H-text{
-    margin-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border-radius: 12px;
-    background-color: rgba(216, 216, 216, 0.747);
-}
-.H-text-2{
-    padding:1px;
-    border-radius: 12px;
-    background-color: rgba(26, 160, 14, 0.836);
-    transition-duration: 0.5s;
-}
-.H-text-2:hover{
-    background-color: rgba(255, 0, 0, 0.788);
-}
-.intro {
-    position: absolute;
-    color: rgb(0, 7, 15);
-    font-size: 30px;
-    text-align: center;
-    margin-top: 10vh;
-    background-image: url('play-bg-2.jpg');
-    padding-top: 40px;
-    padding-bottom: 400px;
-    padding-left: 70px;
-    padding-right: 70px;
-    border-radius: 24px;
-    background-size: cover;
-    border: 2px solid black;
-    align-items: center;
-    justify-content: center;
-}
-
-.btn-01 {
-    width: 230px;
-    height: 230px;
-    position: absolute;
-    margin-top: 640px;
-    margin-left: 830px;
-    background-image: url("play-btn.png");
-    background-color: transparent;
-    border: none;
-    background-size: contain;
-    cursor: pointer;
-} 
-.btn-01:hover {
-    transition-duration: 1s;
-    margin-left: 900px;
-}
-.charact{
-    align-items: center;
-    justify-content: center;
-}
-.char01{
-    position: absolute;
-    width: 255px;
-    margin-left: -140px;
-    margin-top: 100px;
-    
-    padding-right: 40px;
-    cursor: pointer;
-}
-.select-char{
-    position: absolute;
-    margin-left: -100px;
-    margin-top: 60px;
-    font-size: 25px;
-    color: rgb(255, 0, 0);
-    border-bottom: 1px solid black;
-    padding-left: 15px;
-    padding-right: 15px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-.intro-head {
-    color: rgb(255, 0, 0);
-    font-size: 60px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
-}
-
-.body {
+* {
     margin: 0;
-}
-
-.boy {
-    width: 280px;
-    margin-top: 54vh;
-    position: absolute;
-}
-
-.score {
-    position: absolute;
-    margin-top: 40px;
-    margin-left: 70px;
-    visibility: visible;
-    font-size: 60px;
-    font-weight: bold;
-    font-family: Gotham;
-    visibility: hidden;
-}
-
-.box {
-    background-image: url("flame.gif");
-    background-size: 50px 100%;
-    width: 50px;
-    height: 100px;
-    position: absolute;
-    margin-top: 70vh;
-}
-
-.arrow {
-    background-image: url("flame.gif");
-    background-size: 50px 100%;
-    width: 50px;
-    height: 100px;
-    position: absolute;
-    margin-top: 470px;
-}
-
-.end {
-    position: absolute;
-    width: 96vw;
-    height: 96vh;
-    background-color: rgba(15, 15, 15, 0.808);
-    font-size: 70px;
-    font-weight: bold;
-    color: rgb(253, 253, 253);
-    font-family: Gotham;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    visibility: hidden;
-    margin-left: 2vw;
-    margin-top: 2vh;
-    border-radius: 24px;
-}
-
-.gameover {
-    color: red;
-    font-size: 100px;
-    padding: 30px;
-    border-radius: 30px;
-    background-color: transparent;
-}
-
-.yourscore {
-    color: rgb(67, 235, 0);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
+    padding: 0;
+    box-sizing: border-box;
 }
 
 @font-face {
@@ -242,12 +9,455 @@
     src: url("Gotham.woff2");
 }
 
-.btn {
-    
-    background-color: transparent;
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    user-select: none;
+    font-family: Gotham, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #0b0c10;
+}
+
+/* =========================================
+   Home Page Screen
+   ========================================= */
+#home-page {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("home-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    z-index: 10;
+}
+
+#welcome {
     text-align: center;
-    font-size: 30px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#welcome h1 {
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 60, 0, 0.4);
+    letter-spacing: 1px;
+}
+
+#start-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.play-box {
+    position: relative;
+    border-radius: 20px;
+    border: 4px solid rgb(196, 4, 4);
+    background-image: url("play-bg-2.jpg");
+    background-size: cover;
+    background-position: center;
+    padding: 24px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7);
+    max-width: 380px;
+    width: 90vw;
+}
+
+#font-charactor {
+    width: 200px;
+    height: auto;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.5));
+    transition: transform 0.3s ease;
+}
+
+#font-charactor:hover {
+    transform: scale(1.06);
+}
+
+.Play {
+    width: 220px;
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));
+}
+
+.Play:hover {
+    transform: scale(1.06);
+    filter: drop-shadow(0 6px 14px rgba(255, 60, 0, 0.6));
+}
+
+.H-text-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.H-play {
+    width: 100%;
+    padding: 12px;
+    font-size: 20px;
+    font-family: Gotham, Arial, sans-serif;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: rgba(26, 160, 14, 0.88);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.H-play:hover {
+    background-color: rgba(220, 20, 20, 0.9);
+    transform: translateY(-2px);
+}
+
+/* =========================================
+   Controls / How to Play Screen
+   ========================================= */
+.start {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("home-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+}
+
+.intro {
+    position: relative;
+    background-image: url('play-bg-2.jpg');
+    background-size: cover;
+    background-position: center;
+    border: 3px solid rgb(196, 4, 4);
+    border-radius: 24px;
+    padding: 28px 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    max-width: 520px;
+    width: 90vw;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.75);
+    text-align: center;
+}
+
+.intro-head {
+    color: rgb(255, 30, 30);
+    font-size: clamp(32px, 4.5vw, 48px);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 900;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.8);
+}
+
+.H-text {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px 20px;
+    border-radius: 14px;
+    background-color: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.ctrl-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.ctrl-key {
+    background: #e63946;
+    color: #ffffff;
+    padding: 4px 14px;
+    border-radius: 8px;
+    box-shadow: 0 3px 0 #9d0208;
+    font-family: monospace;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.charact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.select-char {
+    font-size: 20px;
+    color: #ffffff;
+    border-bottom: 2px solid #e63946;
+    padding-bottom: 4px;
+    font-weight: bold;
+}
+
+.char01 {
+    width: 120px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+.char01:hover {
+    transform: scale(1.1);
+}
+
+.start-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.btn-back {
+    padding: 10px 24px;
+    font-size: 18px;
+    font-family: Gotham, Arial, sans-serif;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: rgba(70, 70, 70, 0.85);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-back:hover {
+    background-color: rgba(110, 110, 110, 0.95);
+    transform: translateY(-2px);
+}
+
+.btn-01 {
+    width: 160px;
+    height: 55px;
+    background-image: url("play-btn.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
     border: none;
     cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.btn-01:hover {
+    transform: scale(1.08);
+}
+
+/* =========================================
+   About Us Modal
+   ========================================= */
+.about-modal {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.75);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 30;
+    backdrop-filter: blur(4px);
+}
+
+.about-card {
+    background-image: url("play-bg-2.jpg");
+    background-size: cover;
+    background-position: center;
+    border: 3px solid rgb(196, 4, 4);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 440px;
+    width: 90vw;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: #ffffff;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8);
+}
+
+.about-card h2 {
+    color: #ff3333;
+    font-size: 30px;
+}
+
+.about-card p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* =========================================
+   Main Game Screen
+   ========================================= */
+.background {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("background.jpg");
+    background-size: cover;
+    background-repeat: repeat-x;
+    overflow: hidden;
+    display: none;
+}
+
+.score {
+    position: absolute;
+    top: 30px;
+    left: 45px;
+    font-size: 64px;
+    font-weight: 900;
+    font-family: Gotham, Arial, sans-serif;
+    color: #ffffff;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
+    z-index: 10;
+}
+
+.boy {
+    position: absolute;
+    left: 60px;
+    top: 0;
+    margin-top: 54vh;
+    width: 280px;
+    height: auto;
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* Ground Obstacle */
+.box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 70vh;
+    width: 50px;
+    height: 100px;
+    background-image: url("flame.gif");
+    background-size: 50px 100%;
+    background-repeat: no-repeat;
+    z-index: 4;
+}
+
+/* Aerial Obstacle */
+.arrow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 52vh;
+    width: 50px;
+    height: 100px;
+    background-image: url("flame.gif");
+    background-size: 50px 100%;
+    background-repeat: no-repeat;
+    z-index: 4;
+}
+
+/* =========================================
+   Game Over & Victory Overlays
+   ========================================= */
+.end, .end-box {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(10, 10, 10, 0.88);
+    backdrop-filter: blur(6px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    visibility: hidden;
+}
+
+.end-card, .win-card {
+    background-image: url("play-bg-2.jpg");
+    background-size: cover;
+    background-position: center;
+    border: 4px solid rgb(196, 4, 4);
+    border-radius: 24px;
+    padding: 35px 45px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+    text-align: center;
+    max-width: 480px;
+    width: 90vw;
+}
+
+.gameover {
+    color: #ff1e1e;
+    font-size: clamp(48px, 6vw, 70px);
+    font-weight: 900;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.6);
+    letter-spacing: 2px;
+}
+
+.yourscore {
+    color: rgb(67, 235, 0);
+    font-size: 32px;
+    font-weight: bold;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.endscore {
+    font-size: 60px;
+    font-weight: 900;
+    color: #ffffff;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.8);
+}
+
+.win-text {
+    color: #ffd700;
+    font-size: clamp(48px, 6vw, 70px);
+    font-weight: 900;
+    text-shadow: 0 4px 20px rgba(255, 215, 0, 0.6);
+}
+
+.win-sub {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    margin-top: 8px;
+}
+
+.btn img {
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+}
+
+.btn:hover {
+    transform: scale(1.08);
 }
