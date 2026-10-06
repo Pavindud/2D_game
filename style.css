@@ -321,9 +321,10 @@ html, body {
     background-image: url("background.jpg");
     background-size: cover;
     background-repeat: repeat-x;
-    background-position: 0px 0px;
+    background-position-x: 0;
     overflow: hidden;
     display: none;
+    transition: background-position 0.1s linear;
 }
 
 .score {

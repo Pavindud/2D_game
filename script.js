@@ -6,7 +6,7 @@ var deadsound = new Audio("dead.mp3");
 
 var runWorker = 0;
 var runImage = 1;
-var x = 0;
+var x = 300;
 var backgroundWorker = 0;
 var jumpImage = 1;
 var jumpWorker = 0;
@@ -93,8 +93,9 @@ function run() {
 }
 
 function background() {
-    x = x - 20;
+    
     document.getElementById("background").style.backgroundPositionX = x + "px";
+    x = x - 20;
 }
 
 function jump() {
@@ -357,10 +358,7 @@ function reload() {
 }
 
 function start() {
-    x = 0;
-    var bg = document.getElementById("background");
-    bg.style.backgroundPositionX = "0px";
-    bg.style.display = "block";
+    document.getElementById("background").style.display = "block";
     var scoreEl = document.getElementById("score");
     scoreEl.style.display = "block";
     scoreEl.style.visibility = "visible";
